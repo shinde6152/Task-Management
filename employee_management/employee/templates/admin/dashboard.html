@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - TaskFlow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4">
+                        <h4 class="text-white">TaskFlow</h4>
+                        <small class="text-white-50">Admin Panel</small>
+                    </div>
+
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{%url 'admin_dasboard'%}">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'admin_user'%}">
+                                <i class="fas fa-users"></i>
+                                Company Users
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'admin_task'%}">
+                                <i class="fas fa-tasks"></i>
+                                Tasks
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{%url 'admin_profile'%}">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <a class="nav-link text-danger" href="../public/index.html">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <!-- Header -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Admin Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-download me-1"></i>Export
+                            </button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-primary">
+                            <i class="fas fa-plus me-1"></i>New Task
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-0 shadow">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs fw-bold text-primary text-uppercase mb-1">
+                                            Total Users
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">45</div>
+                                        <div class="mt-2 text-success">
+                                            <small><i class="fas fa-arrow-up me-1"></i>5% increase</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-0 shadow">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs fw-bold text-success text-uppercase mb-1">
+                                            Active Tasks
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">128</div>
+                                        <div class="mt-2 text-success">
+                                            <small><i class="fas fa-arrow-up me-1"></i>12% increase</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat-icon bg-success bg-opacity-10 text-success">
+                                            <i class="fas fa-tasks"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-0 shadow">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs fw-bold text-warning text-uppercase mb-1">
+                                            Pending Tasks
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">24</div>
+                                        <div class="mt-2 text-danger">
+                                            <small><i class="fas fa-arrow-down me-1"></i>3% decrease</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-0 shadow">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs fw-bold text-info text-uppercase mb-1">
+                                            Completion Rate
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">78%</div>
+                                        <div class="mt-2 text-success">
+                                            <small><i class="fas fa-arrow-up me-1"></i>8% increase</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat-icon bg-info bg-opacity-10 text-info">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity & Quick Stats -->
+                <div class="row">
+                    <!-- Recent Tasks -->
+                    <div class="col-lg-8 mb-4">
+                        <div class="card shadow">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-tasks me-2"></i>Recent Tasks
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Task</th>
+                                                <th>Assigned To</th>
+                                                <th>Priority</th>
+                                                <th>Status</th>
+                                                <th>Due Date</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="priority-high">
+                                                <td>
+                                                    <strong>Website Redesign</strong>
+                                                    <div class="text-muted small">Complete homepage redesign</div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-primary me-2">JD</div>
+                                                        John Doe
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-danger">High</span></td>
+                                                <td><span class="badge badge-in-progress">In Progress</span></td>
+                                                <td>2024-02-15</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="priority-medium">
+                                                <td>
+                                                    <strong>API Integration</strong>
+                                                    <div class="text-muted small">Integrate payment gateway</div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-success me-2">SJ</div>
+                                                        Sarah Johnson
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-warning">Medium</span></td>
+                                                <td><span class="badge badge-pending">Pending</span></td>
+                                                <td>2024-02-20</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="priority-low">
+                                                <td>
+                                                    <strong>Documentation Update</strong>
+                                                    <div class="text-muted small">Update user guides</div>
+                                                </td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="avatar bg-warning me-2">MW</div>
+                                                        Mike Wilson
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-success">Low</span></td>
+                                                <td><span class="badge badge-completed">Completed</span></td>
+                                                <td>2024-02-10</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions & Team Stats -->
+                    <div class="col-lg-4 mb-4">
+                        <!-- Quick Actions -->
+                        <div class="card shadow">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <a href="users.html" class="btn btn-primary">
+                                        <i class="fas fa-user-plus me-2"></i>Add User
+                                    </a>
+                                    <a href="tasks.html" class="btn btn-outline-primary">
+                                        <i class="fas fa-plus-circle me-2"></i>Create Task
+                                    </a>
+                                    <button class="btn btn-outline-secondary">
+                                        <i class="fas fa-chart-pie me-2"></i>View Reports
+                                    </button>
+                                    <button class="btn btn-outline-info">
+                                        <i class="fas fa-cog me-2"></i>Settings
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Team Statistics -->
+                        <div class="card shadow mt-4">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-chart-pie me-2"></i>Team Statistics
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Productivity</span>
+                                        <span class="text-success">85%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-success" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Task Completion</span>
+                                        <span class="text-primary">78%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" style="width: 78%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>On Time Delivery</span>
+                                        <span class="text-warning">65%</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 65%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

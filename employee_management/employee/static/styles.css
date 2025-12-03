@@ -1,0 +1,234 @@
+/* Custom Styles for TaskFlow */
+
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --dark-color: #1f2937;
+    --light-color: #f8fafc;
+}
+
+/* Login Page Styles */
+.login-body {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-left {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.login-form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+}
+
+/* Dashboard Layout */
+.sidebar {
+    background: var(--dark-color);
+    color: white;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 12px 20px;
+    margin: 5px 0;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.sidebar .nav-link i {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.main-content {
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Stat Cards */
+.stat-card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .card-body {
+    padding: 1.5rem;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* Task Status Badges */
+.badge-pending {
+    background-color: #fef3c7;
+    color: #d97706;
+}
+
+.badge-in-progress {
+    background-color: #dbeafe;
+    color: #2563eb;
+}
+
+.badge-completed {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.badge-cancelled {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+/* Priority Indicators */
+.priority-high {
+    border-left: 4px solid var(--danger-color);
+}
+
+.priority-medium {
+    border-left: 4px solid var(--warning-color);
+}
+
+.priority-low {
+    border-left: 4px solid var(--success-color);
+}
+
+/* Table Styles */
+.table th {
+    border-top: none;
+    font-weight: 600;
+    color: var(--dark-color);
+    background-color: #f8fafc;
+}
+
+/* Avatar Styles */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+/* Loading Animation */
+.loading-spinner {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 280px;
+        z-index: 1050;
+        transition: left 0.3s;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+    }
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1060;
+    min-width: 300px;
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Custom Button Styles */
+.btn-primary {
+    background: var(--primary-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background: var(--secondary-color);
+    transform: translateY(-1px);
+}
+
+/* Form Styles */
+.form-control, .form-select {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}

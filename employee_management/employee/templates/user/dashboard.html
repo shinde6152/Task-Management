@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - TaskFlow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4">
+                        <h4 class="text-white">TaskFlow</h4>
+                        <small class="text-white-50">User Panel</small>
+                    </div>
+
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="{% url 'user_dashboard'%}">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'user_task'%}">
+                                <i class="fas fa-tasks"></i>
+                                My Tasks
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'user_profile'%}">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                        </li>
+                        <li class="nav-item mt-4">
+                            <a class="nav-link text-danger" href="../public/index.html">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content">
+                <!-- Header -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">My Dashboard</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-download me-1"></i>Export
+                            </button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-primary">
+                            <i class="fas fa-plus me-1"></i>New Task
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Welcome Section -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card bg-primary text-white shadow">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-md-8">
+                                        <h4 class="card-title">Welcome back, Mike!</h4>
+                                        <p class="card-text mb-0">You have 8 active tasks. 3 are due this week.</p>
+                                    </div>
+                                    <div class="col-md-4 text-end">
+                                        <div class="avatar bg-white text-primary mx-auto" style="width: 80px; height: 80px; font-size: 1.8rem;">
+                                            MW
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-0 shadow">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs fw-bold text-primary text-uppercase mb-1">
+                                            Total Tasks
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">8</div>
+                                        <div class="mt-2 text-success">
+                                            <small><i class="fas fa-arrow-up me-1"></i>2 new tasks</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat-icon bg-primary bg-opacity-10 text-primary">
+                                            <i class="fas fa-tasks"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-0 shadow">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs fw-bold text-success text-uppercase mb-1">
+                                            Completed
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">3</div>
+                                        <div class="mt-2 text-success">
+                                            <small><i class="fas fa-check me-1"></i>37% done</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat-icon bg-success bg-opacity-10 text-success">
+                                            <i class="fas fa-check-circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-0 shadow">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs fw-bold text-warning text-uppercase mb-1">
+                                            In Progress
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">4</div>
+                                        <div class="mt-2 text-warning">
+                                            <small><i class="fas fa-clock me-1"></i>50% ongoing</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat-icon bg-warning bg-opacity-10 text-warning">
+                                            <i class="fas fa-spinner"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-0 shadow">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-xs fw-bold text-danger text-uppercase mb-1">
+                                            Overdue
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">1</div>
+                                        <div class="mt-2 text-danger">
+                                            <small><i class="fas fa-exclamation me-1"></i>Needs attention</small>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <div class="stat-icon bg-danger bg-opacity-10 text-danger">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Tasks & Quick Actions -->
+                <div class="row">
+                    <!-- Recent Tasks -->
+                    <div class="col-lg-8 mb-4">
+                        <div class="card shadow">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-clock me-2"></i>Upcoming Tasks
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Task</th>
+                                                <th>Priority</th>
+                                                <th>Status</th>
+                                                <th>Due Date</th>
+                                                <th>Progress</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="priority-high">
+                                                <td>
+                                                    <strong>API Integration</strong>
+                                                    <div class="text-muted small">Integrate payment gateway API</div>
+                                                </td>
+                                                <td><span class="badge bg-danger">High</span></td>
+                                                <td><span class="badge badge-in-progress">In Progress</span></td>
+                                                <td>2024-02-15</td>
+                                                <td>
+                                                    <div class="progress" style="height: 6px; width: 80px;">
+                                                        <div class="progress-bar bg-info" style="width: 65%"></div>
+                                                    </div>
+                                                    <small class="text-muted">65%</small>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="priority-medium">
+                                                <td>
+                                                    <strong>Database Optimization</strong>
+                                                    <div class="text-muted small">Optimize database queries</div>
+                                                </td>
+                                                <td><span class="badge bg-warning">Medium</span></td>
+                                                <td><span class="badge badge-pending">Pending</span></td>
+                                                <td>2024-02-20</td>
+                                                <td>
+                                                    <div class="progress" style="height: 6px; width: 80px;">
+                                                        <div class="progress-bar bg-warning" style="width: 0%"></div>
+                                                    </div>
+                                                    <small class="text-muted">0%</small>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr class="priority-low">
+                                                <td>
+                                                    <strong>Documentation Update</strong>
+                                                    <div class="text-muted small">Update API documentation</div>
+                                                </td>
+                                                <td><span class="badge bg-success">Low</span></td>
+                                                <td><span class="badge badge-completed">Completed</span></td>
+                                                <td>2024-02-10</td>
+                                                <td>
+                                                    <div class="progress" style="height: 6px; width: 80px;">
+                                                        <div class="progress-bar bg-success" style="width: 100%"></div>
+                                                    </div>
+                                                    <small class="text-muted">100%</small>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-primary">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions & Progress -->
+                    <div class="col-lg-4 mb-4">
+                        <!-- Quick Actions -->
+                        <div class="card shadow">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-grid gap-2">
+                                    <a href="tasks.html" class="btn btn-primary">
+                                        <i class="fas fa-plus-circle me-2"></i>Create Task
+                                    </a>
+                                    <button class="btn btn-outline-primary">
+                                        <i class="fas fa-calendar me-2"></i>View Calendar
+                                    </button>
+                                    <button class="btn btn-outline-secondary">
+                                        <i class="fas fa-chart-bar me-2"></i>My Reports
+                                    </button>
+                                    <button class="btn btn-outline-info">
+                                        <i class="fas fa-cog me-2"></i>Settings
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task Progress -->
+                        <div class="card shadow mt-4">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-chart-pie me-2"></i>Task Overview
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Completed</span>
+                                        <span class="text-success">3/8</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-success" style="width: 37%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>In Progress</span>
+                                        <span class="text-primary">4/8</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" style="width: 50%"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Pending</span>
+                                        <span class="text-warning">1/8</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-warning" style="width: 12%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span>Overdue</span>
+                                        <span class="text-danger">1/8</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-danger" style="width: 12%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card shadow">
+                            <div class="card-header bg-white py-3">
+                                <h5 class="card-title mb-0">
+                                    <i class="fas fa-history me-2"></i>Recent Activity
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-timeline">
+                                    <div class="activity-item d-flex mb-3">
+                                        <div class="activity-icon me-3">
+                                            <i class="fas fa-check-circle text-success"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p class="mb-1">Completed task "Documentation Update"</p>
+                                            <small class="text-muted">2 hours ago</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item d-flex mb-3">
+                                        <div class="activity-icon me-3">
+                                            <i class="fas fa-edit text-primary"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p class="mb-1">Updated progress on "API Integration" to 65%</p>
+                                            <small class="text-muted">5 hours ago</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item d-flex mb-3">
+                                        <div class="activity-icon me-3">
+                                            <i class="fas fa-comment text-info"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p class="mb-1">Added comment to "Database Optimization"</p>
+                                            <small class="text-muted">1 day ago</small>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item d-flex">
+                                        <div class="activity-icon me-3">
+                                            <i class="fas fa-tasks text-warning"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <p class="mb-1">Started working on "API Integration"</p>
+                                            <small class="text-muted">2 days ago</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
