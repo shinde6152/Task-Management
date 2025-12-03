@@ -6,7 +6,7 @@
     <title>TaskFlow - Sign Up</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+<!--    <link rel="stylesheet" href="css/styles.css">-->
 </head>
 <body class="bg-gray-50">
     <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -25,7 +25,19 @@
                 </p>
             </div>
 
-            <form id="signupForm" class="mt-8 space-y-6">
+            <form id="signupForm" method="POST" class="mt-8 space-y-6" action="{% url 'signup' %}">
+                {% csrf_token %}
+                {% if errors %}
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                    <ul class="list-disc pl-5">
+                        {% for field, messages in errors.items %}
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
                 <div id="signupError" class="hidden bg-red-50 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                     <span class="block sm:inline" id="signupErrorMessage"></span>
                 </div>
@@ -45,15 +57,27 @@
                     </div>
                     <div>
                         <label for="signupPassword" class="block text-sm font-medium text-gray-700">Password</label>
-                        <input id="signupPassword" name="password" type="password" required
-                               class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                               placeholder="••••••••">
+                        <div class="mt-1 relative">
+                            <input id="signupPassword" name="password" type="password" required
+                                   class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                   placeholder="••••••••">
+
+                            <span class="absolute inset-y-0 right-3 flex items-center toggle-eye" onclick="togglePassword('signupPassword', 'eye1')">
+                                <i id="eye1" class="fas fa-eye"></i>
+                            </span>
+                        </div>
                     </div>
                     <div>
                         <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
-                        <input id="confirmPassword" name="confirmPassword" type="password" required
-                               class="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                               placeholder="••••••••">
+                        <div class="mt-1 relative">
+                            <input id="confirmPassword" name="confirmPassword" type="password" required
+                                   class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                   placeholder="••••••••">
+
+                            <span class="absolute inset-y-0 right-3 flex items-center toggle-eye" onclick="togglePassword('confirmPassword', 'eye2')">
+                                <i id="eye2" class="fas fa-eye"></i>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -86,8 +110,22 @@
             </form>
         </div>
     </div>
-
-<!--    <script src="js/auth.js"></script>-->
-<!--    <script src="js/utils.js"></script>-->
 </body>
+<script>
+function togglePassword(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    if (input.type === "password") {
+        input.type = "text";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+    } else {
+        input.type = "password";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+    }
+}
+</script>
+
 </html>

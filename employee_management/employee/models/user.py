@@ -13,7 +13,7 @@ class user(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=200)  # will store hashed password
-    checkbox_check = models.BooleanField(default=False)
+    terms = models.BooleanField(default=False)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default="user")
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
