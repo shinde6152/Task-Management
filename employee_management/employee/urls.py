@@ -20,7 +20,7 @@ from .views.users.task import user_task
 urlpatterns = [
     # Auth
     path('', login, name="login"),
-    path('/signup', signup, name='signup'),
+    path('signup', signup, name='signup'),
 
     # Admin
     path('admin_dashboard', admin_dasboard, name='admin_dasboard'),
