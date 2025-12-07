@@ -1,7 +1,7 @@
 from django.urls import path
 from .views.auth.auth import login
 from .views.auth.auth import signup
-from .views.admin.dashboard import admin_dasboard
+from .views.admin.dashboard import admin_dashboard
 from .views.admin.profile import admin_profile
 from .views.admin.task import admin_task
 from .views.admin.user import admin_user
@@ -17,30 +17,32 @@ from .views.users.profile import user_profile
 from .views.users.task import user_task
 
 
+
 urlpatterns = [
-    # Auth
-    path('', login, name="login"),
-    path('signup', signup, name='signup'),
 
-    # Admin
-    path('admin_dashboard', admin_dasboard, name='admin_dasboard'),
-    path('admin_profile', admin_profile, name='admin_profile'),
-    path('admin_task', admin_task, name='admin_task'),
-    path('admin_user', admin_user, name='admin_user'),
+    # -------------------- AUTH --------------------
+    path("", login, name="login"),
+    path("signup/", signup, name="signup"),
 
-    # Administrator
-    path('adminstrator_companies', administrator_companies, name='administrator_companies'),
-    path('administrator_dashboard', administrator_dashboard, name='administrator_dashboard'),
-    path('administrator_profile', administrator_profile, name='administrator_profile'),
-    path('administrator_users', administrator_users, name='administrator_users'),
+    # -------------------- ADMINISTRATOR --------------------
+    path("administrator/dashboard/", administrator_dashboard, name="administrator_dashboard"),
+    path("administrator/profile/", administrator_profile, name="administrator_profile"),
+    path("administrator/companies/", administrator_companies, name="administrator_companies"),
+    path("administrator/users/", administrator_users, name="administrator_users"),
 
-    # Manager
-    path('manager_dashboard', manager_dashboard, name='manager_dashboard'),
-    path('manager_tasks', manager_tasks, name='manager_tasks'),
-    path('manager_team', manager_team, name='manager_team'),
+    # -------------------- ADMIN --------------------
+    path("app-admin/dashboard/", admin_dashboard, name="admin_dashboard"),
+    path("app-admin/profile/", admin_profile, name="admin_profile"),
+    path("app-admin/task/", admin_task, name="admin_task"),
+    path("app-admin/users/", admin_user, name="admin_user"),
 
-    # users
-    path('user_dashboard', user_dashboard, name='user_dashboard'),
-    path('user_profile', user_profile, name='user_profile'),
-    path('user_task', user_task, name='user_task')
+    # -------------------- MANAGER --------------------
+    path("manager/dashboard/", manager_dashboard, name="manager_dashboard"),
+    path("manager/tasks/", manager_tasks, name="manager_tasks"),
+    path("manager/team/", manager_team, name="manager_team"),
+
+    # -------------------- USER --------------------
+    path("user/dashboard/", user_dashboard, name="user_dashboard"),
+    path("user/profile/", user_profile, name="user_profile"),
+    path("user/task/", user_task, name="user_task"),
 ]
