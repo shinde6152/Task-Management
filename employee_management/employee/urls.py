@@ -1,6 +1,5 @@
 from django.urls import path
-from .views.auth.auth import login
-from .views.auth.auth import signup
+from .views.auth.auth import login,signup,logout
 from .views.admin.dashboard import admin_dashboard
 from .views.admin.profile import admin_profile
 from .views.admin.task import admin_task
@@ -22,6 +21,7 @@ urlpatterns = [
 
     # -------------------- AUTH --------------------
     path("", login, name="login"),
+    path("logout/", logout, name="logout"),
     path("signup/", signup, name="signup"),
 
     # -------------------- ADMINISTRATOR --------------------
