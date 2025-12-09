@@ -74,10 +74,10 @@
                                 <div class="avatar bg-primary mx-auto mb-3" style="width: 100px; height: 100px; font-size: 2rem;">
                                     JS
                                 </div>
-                                <h4 class="card-title">John Smith</h4>
-                                <p class="text-muted">Administrator</p>
+                                <h4 class="card-title">{{profile_details.name}}</h4>
+                                <p class="text-muted">{{profile_details.role}}</p>
                                 <p class="text-muted mb-3">
-                                    <i class="fas fa-envelope me-2"></i>admin@system.com
+                                    <i class="fas fa-envelope me-2"></i>{{profile_details.email}}
                                 </p>
                                 <div class="d-grid gap-2">
                                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
@@ -134,21 +134,21 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label text-muted">Full Name</label>
-                                        <p class="fw-bold">John Smith</p>
+                                        <p class="fw-bold">{{profile_details.name}}</p>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label text-muted">Email</label>
-                                        <p class="fw-bold">admin@system.com</p>
+                                        <p class="fw-bold">{{profile_details.email}}</p>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label text-muted">Phone</label>
-                                        <p class="fw-bold">+1 (555) 123-4567</p>
+                                        <p class="fw-bold">{{profile_details.phone}}</p>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label text-muted">Role</label>
-                                        <p class="fw-bold"><span class="badge bg-info">Administrator</span></p>
+                                        <p class="fw-bold"><span class="badge bg-info">{{profile_details.role}}</span></p>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -223,7 +223,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="PATCH" action="{% url 'administrator_profile' %}">
                         <div class="mb-3">
                             <label class="form-label">Full Name</label>
                             <input type="text" class="form-control" value="John Smith">

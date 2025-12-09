@@ -12,6 +12,7 @@ class user(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=12,null=True,blank=True)
     password = models.CharField(max_length=200)  # will store hashed password
     terms = models.BooleanField(default=False)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default="user")
