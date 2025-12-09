@@ -10,6 +10,9 @@ class RoleAccessMiddleware:
         path = request.path
         role = request.session.get("user_role")
 
+        if path.startswith("/admin/"):     # <-- IMPORTANT FIX
+            return self.get_response(request)
+
         # ============================
         # 1️⃣ PUBLIC PAGES (NO LOGIN REQUIRED)
         # ============================

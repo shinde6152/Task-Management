@@ -20,7 +20,7 @@ def validate_signup_data(fullName, email, password, confirmPassword, terms):
         errors['email'] = "Email already exists."
 
     # ----- Password validation -----
-    if len(password) < 8 or len(password) > 15:
+    if len(password) < 8 or len(password) > 30:
         errors['password'] = "Password must be 8–15 characters long."
     elif " " in password:
         errors['password'] = "Password cannot contain spaces."
